@@ -1,0 +1,71 @@
+Problem
+    Statement"),C.a.createElement("p",{className:"text-left",style:{fontSize:"20px"}},"You can compare yourself to
+    anything around you to get motivated, even a beer in a bottle struggling to get out of it to explore the world. Your
+    life is your game, you have to curate the pitch for
+    self."))),C.a.createElement(p.a,{className:"mt-5"},C.a.createElement(y.a,{md:"12"},C.a.createElement("span",{className:"text-ligth",id:"infoSpan"},"Submit
+    your answer
+    here!"),C.a.createElement("br",null),C.a.createElement("span",{className:"text-danger",id:"resultSpan"}),C.a.createElement(TB.a,null,C.a.createElement(UB.a,{className:"py-4",style:{fontSize:"18px"},id:"answerInputId",placeholder:"Enter
+    Your
+    Answer",width:"50%",value:this.state.inputValue,onChange:this.inputChangeHandler})),C.a.createElement(S.a,{color:"primary",onClick:this.checkAnswer,id:"answerCheckBtn"},"Check
+    Answer")," ")),C.a.createElement(p.a,null,C.a.createElement(y.a,{md:" 12"},C.a.createElement("h3",{className:"mt-4
+    text-white"},"Hints"))),C.a.createElement(p.a,null,C.a.createElement(y.a,{md:"12"},C.a.createElement(S.a,{color:"info",onClick:this.getHint,id:"firstHintBtn"},"Get
+    Hint")),C.a.createElement(y.a,{md:"12",className:"text-white
+    text-center"},C.a.createElement("h3",{className:"text-white
+    text-center",id:"hnterr"}))),C.a.createElement(p.a,{className:"mt-3"},C.a.createElement(y.a,{md:"12"},C.a.createElement("h4",{className:"text-white",id:"hnt1"},"Hint
+    1:- Not
+    Used"))),C.a.createElement(p.a,{className:"mt-3"},C.a.createElement(y.a,{md:"12"},C.a.createElement("h4",{className:"text-white",id:"hnt2"},"Hint
+    2:- Not
+    Used"))),C.a.createElement(p.a,{className:"mt-3"},C.a.createElement(y.a,{md:"12"},C.a.createElement("h4",{className:"text-white",id:"hnt3"},"Hint
+    3:- Not Used"))),C.a.createElement(p.a,{className:"mt-3"},C.a.createElement(y.a,{md:"12",className:"hintColClass
+    d-none",id:"hintColId"},C.a.createElement("h4",{className:"hintClass d-none mt-3
+    mb-3",id:"hintId"})))))),C.a.createElement(PB.a,{modalClassName:"modal-black",isOpen:this.state.formModal2,toggle:function(){return
+    A.toggleModal2("formModal2")}},C.a.createElement("div",{className:"modal-header
+    justify-content-center"},C.a.createElement("div",{className:"text-muted text-center ml-auto
+    mr-auto"},C.a.createElement("h3",{className:"mb-0 text-danger"},"You are not in any team . Kindly join any team or
+    create your own team if you want to participate in the
+    competetion"))),C.a.createElement("div",{className:"modal-body"},C.a.createElement("div",{className:"text-center"},C.a.createElement(S.a,{className:"my-4",id:"makeBtn",color:"danger",type:"button",onClick:this.sendUserBack},"Ok")))))))}}]),B}(C.a.Component),ZB=function(A){Object(i.a)(B,A);var
+    E=Object(s.a)(B);function B(){return Object(a.a)(this,B),E.apply(this,arguments)}return
+    Object(n.a)(B,[{key:"componentDidMount",value:function(){document.body.classList.toggle("index-page")}},{key:"componentWillUnmount",value:function(){document.body.classList.toggle("index-page")}},{key:"render",value:function(){return
+    C.a.createElement(C.a.Fragment,null,C.a.createElement(kE,null),C.a.createElement("div",{className:"wrapper"},C.a.createElement(WB,null),C.a.createElement("div",{className:"main"}),C.a.createElement(eE,null)))}}]),B}(C.a.Component),qB=(B(89),function(A){Object(i.a)(B,A);var
+    E=Object(s.a)(B);function B(A){var g;return
+    Object(a.a)(this,B),(g=E.call(this,A)).toggleModal2=function(A){g.setState(Object(hE.a)({},A,!g.state[A]))},g.inputChangeHandler=g.inputChangeHandler.bind(Object(r.a)(g)),g.checkAnswer=g.checkAnswer.bind(Object(r.a)(g)),g.authListener=g.authListener.bind(Object(r.a)(g)),g.sendUserBack=g.sendUserBack.bind(Object(r.a)(g)),g.getHint=g.getHint.bind(Object(r.a)(g)),g.checkHint=g.checkHint.bind(Object(r.a)(g)),g.state={inputValue:"",userTeam:"",user:{},uid:"",formModal2:!1,score:50},g}return
+    Object(n.a)(B,[{key:"componentDidMount",value:function(){document.getElementById("loaderbox").classList.remove("d-none"),this.authListener()}},{key:"authListener",value:function(){var
+    A=this;c.auth().onAuthStateChanged((function(E){E?(A.setState({user:E,uid:E.uid}),c.database().ref("users").child(E.uid).once("value",(function(E){var
+    B=E.val(),g=B.user_team;void 0===B.college_name?window.location.href="/register-page"
+    :""!==B.user_team&&1===B.status?(A.setState({userTeam:g}),A.checkHint(),c.database().ref("Teams").child(g).once("value",(function(A){var
+    E=A.val(),B=E.random_num;1===B||4===B?void
+    0===E.stage2||(document.getElementById("resultSpan").innerHTML="Stage Completed"
+    ,document.getElementById("infoSpan").classList.add("d-none"),document.getElementById("resultSpan").classList.remove("text-danger"),document.getElementById("resultSpan").classList.add("text-success"),document.getElementById("resultSpan").style.fontSize="30px"
+    ,document.getElementById("answerInputId").classList.add("d-none"),document.getElementById("answerCheckBtn").classList.add("d-none")):window.location.href="/"
+    }))):A.toggleModal2("formModal2")}))):window.location.href="/" }))}},{key:"inputChangeHandler",value:function(A){var
+    E=A.target.value;this.setState({inputValue:E})}},{key:"checkHint",value:function(){var
+    A=this.state.userTeam;c.database().ref("Teams").child(A).once("value",(function(A){var E=A.val();void
+    0!=E.s2h1?(document.getElementById("hnt1").innerHTML="Hint 1:- "
+    +E.s2h1,document.getElementById("loaderbox").classList.add("d-none")):document.getElementById("loaderbox").classList.add("d-none"),void
+    0!=E.s2h2?document.getElementById("hnt2").innerHTML="Hint 2:- "
+    +E.s2h2:document.getElementById("loaderbox").classList.add("d-none"),void
+    0!=E.s2h3?document.getElementById("hnt3").innerHTML="Hint 3:- "
+    +E.s2h3:document.getElementById("loaderbox").classList.add("d-none")}))}},{key:"getHint",value:function(){document.getElementById("loaderbox").classList.remove("d-none");var
+    A=this.state.userTeam;c.database().ref("Hints").child("Stage2").once("value",(function(E){var
+    B=E.val();c.database().ref("Teams").child(A).once("value",(function(E){var
+    g=E.val(),C=g.life_lines,I=parseInt(C),Q=g.team_score,e=parseInt(Q)-10,t=parseInt(C)-1;void 0!=g.s2h1?void
+    0!=g.s2h2?void 0!=g.s2h3?(document.getElementById("hnterr").innerHTML="No more hints available !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):""!=B.Hint3?I<1?(c.database().ref("Teams").child(A).update({team_score:e}),c.database().ref("Teams").child(A).update({s2h3:B.Hint3}),document.getElementById("hnt3").innerHTML="Hint 3:- "
+    +B.Hint3,document.getElementById("hnterr").innerHTML="Hint 3 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(c.database().ref("Teams").child(A).update({life_lines:t}),c.database().ref("Teams").child(A).update({s2h3:B.Hint3}),document.getElementById("hnt3").innerHTML="Hint 3:- "
+    +B.Hint3,document.getElementById("hnterr").innerHTML="Hint 3 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(document.getElementById("hnterr").innerHTML="Hint 3 not available check in few minutes !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):""!=B.Hint2?I<1?(c.database().ref("Teams").child(A).update({team_score:e}),c.database().ref("Teams").child(A).update({s2h2:B.Hint2}),document.getElementById("hnt2").innerHTML="Hint 2:- "
+    +B.Hint2,document.getElementById("hnterr").innerHTML="Hint 2 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(c.database().ref("Teams").child(A).update({life_lines:t}),c.database().ref("Teams").child(A).update({s2h2:B.Hint2}),document.getElementById("hnt2").innerHTML="Hint 2:- "
+    +B.Hint2,document.getElementById("hnterr").innerHTML="Hint 2 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(document.getElementById("hnterr").innerHTML="Hint 2 not available check in few minutes !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):""!=B.Hint1?I<1?(c.database().ref("Teams").child(A).update({team_score:e}),c.database().ref("Teams").child(A).update({s2h1:B.Hint1}),document.getElementById("hnt1").innerHTML="Hint 1:- "
+    +B.Hint1,document.getElementById("hnterr").innerHTML="Hint 1 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(c.database().ref("Teams").child(A).update({life_lines:t}),c.database().ref("Teams").child(A).update({s2h1:B.Hint1}),document.getElementById("hnt1").innerHTML="Hint 1:- "
+    +B.Hint1,document.getElementById("hnterr").innerHTML="Hint 1 retrieved !!"
+    ,document.getElementById("loaderbox").classList.add("d-none")):(document.getElementById("hnterr").innerHTML="Hint 1 not available check in few minutes !!"
+    ,document.getElementById("loaderbox").classList.add("d-none"))})).then((function(){}))}))}},{key:"checkAnswer",value:function(){var
+    A=this.state.inputValue.toLowerCase(),E=this.state.userTeam,B=this.state.score,g=new
+    Date,C=0,I=0,Q=g.getTime();
+"black panther"===A?
