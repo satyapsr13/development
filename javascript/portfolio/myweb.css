@@ -1,0 +1,8 @@
+.navbar{
+    /* display: inline; */
+    justify-content: space-between;
+    color: white;
+}
+.collapse{
+    float: right;
+}

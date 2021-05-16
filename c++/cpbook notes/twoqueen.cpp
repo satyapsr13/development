@@ -13,7 +13,7 @@ int main()
 
         for (int j = 0; j < t; j++)
         {
-            for (int  = 0; i < t; i++)
+            for (int i = 0; i < t; i++)
             {
 
                 /* code */

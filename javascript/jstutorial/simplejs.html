@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+.container form input{
+    border-radius: 500pc;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">    <form   name="formcal">
+
+
+         <input type="text" name="a1" placeholder="1" > <br>
+        <br>
+         <input type="text" name="a2" placeholder="2" > <br>
+        result <input type="text" name="res"> <br>
+        <input type="button" value="cal" onclick="sumvalue()">
+    </form>
+</div>
+
+    <script>
+        function sumvalue() {
+            var a, b, c;
+            a = Number(document.formcal.a1.value);
+            b = Number(document.formcal.a2.value);
+            c = a + b;
+            // return c;
+            document.formcal.res.value = c;
+        }
+    </script>
+</body>
+
+</html>
