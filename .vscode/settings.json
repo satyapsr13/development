@@ -76,5 +76,6 @@
         "variant": "cpp"
     },
     "editor.fontSize": 16,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -131,12 +131,12 @@ int main(int argc, char const *argv[])
         long long int k, sum = 0;
         cin >> k;
         vector<int> fact;
-        int l = 4 * k + 1;
-        int m = 2 * k + 1, count = 0;
+        long long int l = 4 * k + 1;
+        long long int m = 2 * k + 1, count = 0;
 
         // int l = __gcd(k + ((2 * k) * (2 * k)), k + ((2 * k) * (2 * k)));
         // 1   1   7   3  1   1   3   1   1   21
-        for (int i = 2; i < l; i++)
+        for (long long int i = 2; i < l; i++)
         {
             if (l % i == 0)
             {
@@ -144,20 +144,23 @@ int main(int argc, char const *argv[])
                 // db(fact[i]);
             }
         }
-        for (int i = 0; i < fact.size(); i++)
+        for (long long int i = 0; i < fact.size(); i++)
         {
             count += m / fact[i];
             // db(count);
             /* code */
         }
-        int ans = m - count - 1+ l;
+        long long int ans = m - count - 2+ l;
+        
         cout << ans << "\n";
-        for (int i = 0; i < fact.size(); i++)
+        // int p;
+        for (long long int i = 0; i < fact.size(); i++)
         {
-            ans += m ;
+            ans += (m / fact[i])*fact[i];
             // db(count);
             /* code */
         }
+        cout << ans << "\n";
     }
 
     return 0;
