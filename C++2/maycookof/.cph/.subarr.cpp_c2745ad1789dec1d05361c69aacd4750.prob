@@ -1,0 +1,1 @@
+{"name":"Local: subarr","url":"d:\\vs code programms\\C++2\\maycookof\\subarr.cpp","tests":[{"id":1622123725526,"input":"1\n212\n222\n222","output":"12312"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\vs code programms\\C++2\\maycookof\\subarr.cpp","group":"local","local":true}

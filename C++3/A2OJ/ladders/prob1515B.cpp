@@ -1,57 +1,43 @@
-// https://codeforces.com/contest/1515/problem/B
+//Coding-challange (c) Copyright 2021 Satyapsr
+/*this code is contributed by satyapsr SDE @ www.semikolan.co  */
 #include <bits/stdc++.h>
-// const double pi = 3.1415926535897932384626433832795;
+//#define int long long int
+#define mod 1e9 + 7
+#define space ' '
+#define endl 'n'
+
 using namespace std;
-// long long r = 1e9;
-int arr[30];
-int main(int argc, char const *argv[])
+void solved_by_satyapsr13()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-
-    long long int z = 2;
-    for (int i = 0; i < 30; i++)
+    int n, k, count = 0, sum = 0;
+    string ans;
+    cin >> n;
+    if (n & 1)
     {
-        if (z >= 1e9 + 1)
-        {
-            break;
-            /* code */
-        }
-        arr[i] = z;
-        z *= 2;
-
+        ans = "NO";
         /* code */
     }
-    // for (int i = 0; i < 40; i++)
-    // {
-    //     cout <<i<<"\t"<< arr[i] << "\n";
-    //     /* code */
-    // }
-
-    int t;
-    cin >> t;
-
-    while (t--)
+    else if(n/2 & 1 and n!=2)
     {
-        long long int n;
-        cin >> n;
-        for ( int i = 0; i < 30; i++)
-        {
-            if (n == arr[i])
-            {
-                cout << "YES\n";
-                break;
-                /* code */
-            }
-            if (n < arr[i])
-            {
-                cout << "NO\n";
-                break;
-                /* code */
-            }
-        }
+        ans = "NO";
+    }else
+    {
+        ans = "YES";
     }
+     cout << ans <<"\n";
+    
+}
+signed main()
+{
 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    int Test_Cases;
+    cin >> Test_Cases;
+    while (Test_Cases--)
+    {
+        solved_by_satyapsr13();
+    }
     return 0;
 }

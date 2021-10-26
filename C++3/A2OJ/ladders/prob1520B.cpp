@@ -1,36 +1,45 @@
-// https://codeforces.com/contest/1520/problem/B
+// // // https://codeforces.com/contest/1520/problem/B
+
 #include <bits/stdc++.h>
-const double pi = 3.1415926535897932384626433832795;
+#define show(n) cout << n
+#define fl(i, n) for (int i = 0; i < n; i++)
+#define sortarr(a) sort(a, a)
+#define sortv(a) sort(a.begin(), a.end())
+#define testcase(t) \
+    int t;          \
+    cin >> t;       \
+    while (t--)
+#define debug(x) cout << "\n" \
+                      << #x << " = " << x << "\n"
+
 using namespace std;
-int main(int argc, char const *argv[])
+
+int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
     int t;
-    cin >> t;
+      
+    
+    
+    
+    
+    
+    int t;
+    scanf("%d", &t);
+    
     while (t--)
     {
-        long long int t = 11, n, count = 0;
-        cin >> n;
-        // count = n;
-        if (n < 11)
-        {
-            count = n;
-            /* code */
-        }
-        else
-        {
-            while (t <= n)
-            {
-                count++;
-                t += t;
-                /* code */
-            }
-            count+=9;
-        }
-        cout << count << "\n";
+        int n;
+        scanf("%d", &n);
+        vector<int> a(n);
+        for (int &x : a)
+            scanf("%d", &x);
+        int ans = 2;
+        if (is_sorted(a.begin(), a.end()))
+            ans = 0;
+        else if (a[0] == 1 || a[n - 1] == n)
+            ans = 1;
+        else if (a[0] == n && a[n - 1] == 1)
+            ans = 3;
+        printf("%d\n", ans);
     }
-
-    return 0;
 }

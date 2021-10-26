@@ -40,8 +40,19 @@
     int t;          \
     cin >> t;       \
     while (t--)
-#define debug(x) cout << "\n" \
-                      << #x << " = " << x << "\n"
+#define db(x) cout << "\n" << #x << " = " << x << "\n"
+/*long long power(long long a, long long b)
+{
+    long long res = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a;
+        a = a * a;
+        b >>= 1;
+    }
+    return res;
+}*/
 
 void solve()
 {
@@ -51,7 +62,6 @@ void solve()
 //   / ___/ __/ __ `/ ___/ __/     / /_/ ___/ __ \/ __ `__ \     / __ \/ _ \/ ___/ _ \
 //  (__  ) /_/ /_/ / /  / /_      / __/ /  / /_/ / / / / / /    / / / /  __/ /  /  __/
 // /____/\__/\__,_/_/   \__/     /_/ /_/   \____/_/ /_/ /_/    /_/ /_/\___/_/   \___/
-
 
 #include <bits/stdc++.h>
 // const double pi = 3.1415926535897932384626433832795;
@@ -64,8 +74,8 @@ int main(int argc, char const *argv[])
     cout.tie(0);
     // int t;cin>>t;while (t--)
     // {
-    //     
+    //
     // }
-    
+
     return 0;
 }
