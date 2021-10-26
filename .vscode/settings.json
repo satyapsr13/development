@@ -73,7 +73,9 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "netfwd": "cpp",
+        "rope": "cpp"
     },
     "editor.fontSize": 16,
     "editor.formatOnSave": true,
