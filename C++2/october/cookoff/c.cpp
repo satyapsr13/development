@@ -55,51 +55,75 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+int i = 0;
+bool check(vector<vector<int>> &v, int x, int y, int n)
+{
+    // cout << x << " " << y << " ";
+    // cout << "\n";
+
+    v[x][y] = 1;
+
+    if (x == n and y == n)
+    {
+        return 1;
+    }
+    if (v[x][y + 1] and v[x + 1][y])
+    {
+        return 0;
+    }
+
+    if (v[x][y + 1] == 0 and v[x + 1][y] == 0)
+    {
+
+        return check(v, x + 1, y, n) || check(v, x, y + 1, n);
+    }
+    if (v[x][y + 1] == 0)
+    {
+
+        return check(v, x, y + 1, n);
+    }
+    if (v[x + 1][y] == 0)
+    {
+
+        return check(v, x + 1, y, n);
+    }
+    return 0;
+}
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
+    int n, k, ans = 0, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n;
-    // vector<int>  v;
-    vector<vector<int>> v(2005);
+    vector<vector<int>> v(n + 2, vector<int>(n + 2));
+    // cout << v[4][1000];
     // memset(v, 0, sizeof(v));
-    unordered_map<int, int> mp;
-
-    for (int i = 0, x; i < n; ++i)
-    {
-        cin >> x;
-        // mp[x]++;
-        v[0].push_back(x);
-    }
-
-    for (int i = 0; i < 2004; ++i)
-    {
-        mp.clear();
-
-        for (int j = 0; j < n; ++j)
-        {
-            mp[v[i][j]]++;
-        }
-
-        for (int j = 0; j < n; ++j)
-        {
-            v[i + 1].push_back(mp[v[i][j]]);
-        }
-        // debug(v[i + 1]);
-    }
-    mp.clear();
-    int query;
-    cin >> query;
     int a, b;
-    while (query--)
+
+    for (int i = 0; i < n + 2; ++i)
+    {
+        v[n + 1][i] = 1;
+        v[i][n + 1] = 1;
+    }
+    for (int i = 0; i < n; ++i)
     {
         cin >> a >> b;
-        cout << v[min(b, n)][a - 1];
-        cout << "\n";
+        v[a][b] = 1;
     }
-    // db(v.size());
-    v.clear();
-    // db(v.size());
-    // debug(v[1]);
+    int ii = 1;
+
+    for (int i = 1; i <= n + 1; ++i)
+    {
+        // ;
+        if (v[1][i] == 1)
+        {
+            while (1)
+            {
+                
+            }
+        }
+    }
+    cout << "NO" << endl;
+    return;
+    // cout << "\n";
 }
 signed main()
 {

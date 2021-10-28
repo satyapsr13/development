@@ -57,49 +57,34 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n;
-    // vector<int>  v;
-    vector<vector<int>> v(2005);
-    // memset(v, 0, sizeof(v));
-    unordered_map<int, int> mp;
-
-    for (int i = 0, x; i < n; ++i)
-    {
-        cin >> x;
-        // mp[x]++;
-        v[0].push_back(x);
-    }
-
-    for (int i = 0; i < 2004; ++i)
-    {
-        mp.clear();
-
-        for (int j = 0; j < n; ++j)
-        {
-            mp[v[i][j]]++;
-        }
-
-        for (int j = 0; j < n; ++j)
-        {
-            v[i + 1].push_back(mp[v[i][j]]);
-        }
-        // debug(v[i + 1]);
-    }
-    mp.clear();
-    int query;
-    cin >> query;
     int a, b;
-    while (query--)
+    cout << "? " << 2;
+    cin >> a;
+    cout << "\n";
+
+    cout << "? " << 3;
+    cin >> b;
+    cout << "\n";
+
+    if (a == 0 and b == 0)
     {
-        cin >> a >> b;
-        cout << v[min(b, n)][a - 1];
-        cout << "\n";
+        cout << "! "
+             << "1"
+             << "\n";
+        return;
     }
-    // db(v.size());
-    v.clear();
-    // db(v.size());
-    // debug(v[1]);
+    if (b == 0)
+    {
+        cout << "! " << 3 << "\n";
+        return;
+    }
+    if (a == 0)
+    {
+        cout << "! " << 2 << "\n";
+        return;
+    }
+    cout <<"! "<< 4 << "\n";
+    return;
 }
 signed main()
 {

@@ -55,43 +55,59 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
-int KnapSack(vector<int> v, int w, int n)
-{
-    if (n == 0)
-    {
-        return v[0];
-    }
-
-    if (w >= 0)
-    {
-        return max(KnapSack(v, w - v[n], n - 1), KnapSack(v, w, n - 1));
-    }
-    else
-    {
-        return KnapSack(v, w, n - 1);
-    }
-}
 void solved_by_satyapsr13()
 
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
 
-    vector<int> v(n);
+    vector<pair<int, int>> v;
 
     for (int i = 0, x; i < n; ++i)
 
     {
 
         cin >> x;
-        
-        if (x >= k / 2 and x <= k)
+        if (x > k)
         {
-            v.push_back(x);
+            continue;
+        }
+        v.push_back(make_pair(x, i + 1));
+    }
+    db(v.size());
+    // debug(v[0].first);
+    sort(v.begin(), v.end());
+    if (v[0].first > k)
+    {
+        cout << "-1"
+             << "\n";
+        return;
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        sum += v[i].first;
+        if (sum > k and sum - v[i].first < ceil(k * 1.0 / 2))
+        {
+            cout << "-1"
+                 << "\n";
+            return;
+        }
+        if (sum >= ceil(k * 1.0 / 2) and sum <= k)
+        {
+            count = i;
+            // break;
+            cout << count + 1;
+            cout << "\n";
+
+            for (int i = 0; i < count + 1; ++i)
+            {
+                cout << v[i].second << " ";
+            }
+
+            cout << "\n";
+            return;
         }
     }
-    cout << KnapSack(v, k, v.size());
-    cout << "\n";
 }
 signed main()
 {

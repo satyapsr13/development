@@ -59,47 +59,56 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n;
-    // vector<int>  v;
-    vector<vector<int>> v(2005);
-    // memset(v, 0, sizeof(v));
-    unordered_map<int, int> mp;
+    vector<int> v(n);
 
     for (int i = 0, x; i < n; ++i)
     {
-        cin >> x;
-        // mp[x]++;
-        v[0].push_back(x);
-    }
-
-    for (int i = 0; i < 2004; ++i)
-    {
-        mp.clear();
-
-        for (int j = 0; j < n; ++j)
+        cin >> v[i];
+        if (v[i] == 0)
         {
-            mp[v[i][j]]++;
+            count++;
         }
-
-        for (int j = 0; j < n; ++j)
-        {
-            v[i + 1].push_back(mp[v[i][j]]);
-        }
-        // debug(v[i + 1]);
     }
-    mp.clear();
-    int query;
-    cin >> query;
-    int a, b;
-    while (query--)
+    array<int, 200001> arr;
+
+    if (count == n)
     {
-        cin >> a >> b;
-        cout << v[min(b, n)][a - 1];
+        for (int i = 1; i <= n; ++i)
+        {
+
+            cout << i << " ";
+        }
         cout << "\n";
+        return;
     }
-    // db(v.size());
-    v.clear();
-    // db(v.size());
-    // debug(v[1]);
+    for (int i = 0; i <= 30; ++i)
+    {
+        sum = 0;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (v[j] & (1 << i))
+            {
+                sum++;
+            }
+        }
+
+        arr[i] = sum;
+    }
+    int gd = 0;
+    for (int i = 0; i < 31; ++i)
+    {
+        gd = __gcd(gd, arr[i]);
+    }
+
+    for (int i = 1; i <= n; ++i)
+    {
+        if (gd % i == 0)
+        {
+            cout << i << " ";
+        }
+    }
+    cout << "\n";
 }
 signed main()
 {

@@ -63,36 +63,60 @@ void solved_by_satyapsr13()
     cin >> s;
     string p;
     cin >> p;
-
-    sort(s.begin(), s.end());
-    sort(p.begin(), p.end());
-    for (int i = n - 1; i >= 0; --i)
+    map<char, int> mp1;
+    map<char, int> mp2;
+    for (auto it : s)
     {
-        if (s[i] != p[i])
-        {
-            break;
-        }
-        n--;
+        // cout << it<<" ";
+        mp1[it]++;
+    }
+    for (auto it : p)
+    {
+        // cout << it<<" ";
+        mp2[it]++;
     }
 
-    
-    for (int i = 1; i < n; ++i)
+    for (int i = 0; i < p.size(); ++i)
     {
-        if (s[i - 1] == s[i] and p[i - 1] != p[i])
+        if (mp1[p[i]] > 0)
         {
-            cout << "NO" << endl;
-            return;
-        }
-
-        if (s[i - 1] != s[i] and p[i - 1] == p[i])
-        {
-            cout << "NO" << endl;
-            return;
+            mp1[p[i]]--;
+            p[i] = '$';
         }
     }
-    cout << "YES"
-         << "\n";
-    return;
+    for (int i = 0; i < n; ++i)
+    {
+        if (p[i] == '$')
+        {
+            if (count > 0 and count < k)
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            count = 0;
+        }
+        count++;
+    }
+
+    for (auto it : mp1)
+    {
+        for (int i = 0; i < it.second; ++i)
+        {
+
+            cout << it.first;
+        }
+    }
+    cout << "\n";
+
+    cout << p;
+    cout << "\n";
+
+    // for (auto it : mp1)
+    // {
+    //     cout << it.first << " ";
+    //     cout << it.second << " ";
+    //     cout << "\n";
+    // }
 }
 signed main()
 {

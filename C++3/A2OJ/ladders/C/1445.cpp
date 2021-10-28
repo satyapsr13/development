@@ -12,7 +12,7 @@ long long power(long long a, long long b, long long md)
 #define dbarr(arr)           \
     cout << #arr << " ~ [ "; \
     for (auto n : arr)       \
-        cout << n << " ";    \
+        cout << n << " ";    \  
     cout << "]" << endl;
 #define dbarrp(arr)                                \
     cout << #arr << " ~ [ ";                       \
@@ -59,47 +59,19 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n;
-    // vector<int>  v;
-    vector<vector<int>> v(2005);
-    // memset(v, 0, sizeof(v));
+    vector<int> v(n);
     unordered_map<int, int> mp;
-
+    set<int> st;
     for (int i = 0, x; i < n; ++i)
     {
-        cin >> x;
-        // mp[x]++;
-        v[0].push_back(x);
+        cin >> v[i];
+        mp[v[i]]++;
+        st.insert(v[i]);
     }
-
-    for (int i = 0; i < 2004; ++i)
+    if (v[0] == v[n - 1])
     {
-        mp.clear();
-
-        for (int j = 0; j < n; ++j)
-        {
-            mp[v[i][j]]++;
-        }
-
-        for (int j = 0; j < n; ++j)
-        {
-            v[i + 1].push_back(mp[v[i][j]]);
-        }
-        // debug(v[i + 1]);
+        mp[v[0]] -= 2;
     }
-    mp.clear();
-    int query;
-    cin >> query;
-    int a, b;
-    while (query--)
-    {
-        cin >> a >> b;
-        cout << v[min(b, n)][a - 1];
-        cout << "\n";
-    }
-    // db(v.size());
-    v.clear();
-    // db(v.size());
-    // debug(v[1]);
 }
 signed main()
 {
@@ -114,3 +86,4 @@ signed main()
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }
+class paint

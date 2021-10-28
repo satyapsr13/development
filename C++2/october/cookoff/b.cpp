@@ -55,51 +55,65 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
+bool cmp(int a, int b)
+{
+    return a > b;
+}
+
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n;
-    // vector<int>  v;
-    vector<vector<int>> v(2005);
-    // memset(v, 0, sizeof(v));
-    unordered_map<int, int> mp;
+    vector<int> v1;
+    vector<int> v2;
 
     for (int i = 0, x; i < n; ++i)
     {
         cin >> x;
-        // mp[x]++;
-        v[0].push_back(x);
-    }
-
-    for (int i = 0; i < 2004; ++i)
-    {
-        mp.clear();
-
-        for (int j = 0; j < n; ++j)
+        // cin >> v[i];
+        if (i & 1)
         {
-            mp[v[i][j]]++;
+            v2.push_back(x);
+            continue;
         }
+        v1.push_back(x);
+    }
 
-        for (int j = 0; j < n; ++j)
-        {
-            v[i + 1].push_back(mp[v[i][j]]);
-        }
-        // debug(v[i + 1]);
-    }
-    mp.clear();
-    int query;
-    cin >> query;
-    int a, b;
-    while (query--)
+    sort(v1.begin(), v1.end(), cmp);
+    sort(v2.begin(), v2.end());
+
+    for (int i = 0; i < n; ++i)
     {
-        cin >> a >> b;
-        cout << v[min(b, n)][a - 1];
-        cout << "\n";
+        if (i < v1.size() and i < v2.size())
+        {
+
+            cout << v1[i] << " " << v2[i] << " ";
+            continue;
+        }
+        if (i < v1.size() )
+        {
+
+            cout << v1[i] << " "  ;
+            continue;
+        }
+        if (i < v2.size())
+        {
+            cout << v2[i] << " ";
+            continue;
+        }
     }
-    // db(v.size());
-    v.clear();
-    // db(v.size());
-    // debug(v[1]);
+    cout << "\n";
+
+    for (int i = 0; i < v1.size(); ++i)
+    {
+        for (int j = i; j < v2.size(); ++j)
+        {
+            ans += v1[i] * v2[j];
+        }
+    }
+    cout << ans;
+    cout << "\n";
 }
 signed main()
 {
