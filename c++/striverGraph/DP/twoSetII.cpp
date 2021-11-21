@@ -1,7 +1,6 @@
 
 #include <bits/stdc++.h>
-using namespace std;
-#define int long long int
+using namespace std; 
 #define count_1 __builtin_popcountll
 long long power(long long a, long long b, long long md)
 {
@@ -55,26 +54,59 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+int ans = 0;
+int arr[502][250000];
+int find(vector<int> v, int n, int sum)
+{
+    if (n < 0)
+    {
+        return 0;
+    }
+    if (sum == 0)
+    {
+        return 1;
+    }
+    if (arr[n][sum] != -1)
+    {
+      return  arr[n][sum];
+    }
+    if (v[n] <= sum)
+    {
+        return arr[n][sum] = find(v, n - 1, sum - v[n]) + find(v, n - 1, sum);
+    }
+    else
+    {
+        return arr[n][sum] = find(v, n - 1, sum);
+    }
+}
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
 
-    cout << "\n";
+    vector<int> v(n);
+
+    for (int i = 0, x; i < n; ++i)
+    {
+        v[i] = i + 1;
+        sum += v[i];
+    }
+    if (sum & 1)
+    {
+        cout << "0"
+             << "\n";
+        return;
+        /* code */
+    }
+    else
+    {
+        cout << find(v, n - 1, sum / 2);
+    }
 }
 signed main()
 {
-
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+    memset(arr, -1, sizeof(arr));
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

@@ -55,15 +55,38 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+int a, b, c, d;
+int dp[101][101][11][11];
+int find(int n, int n1, int n2, int l, int r)
+{
+
+    if (n == 0)
+    {
+        return 1;
+    }
+    if (dp[n1][n2][l][r]!=-1)
+    {
+        return dp[n1][n2][l][r];
+    }
+    int f=0, h=0;
+    if (n1 > 0 and l >0)
+    {
+        f = find(n - 1, n1 - 1, n2, l - 1, d) %   100000000;
+        // dp[n1][n2][l][r] = f;
+    }
+    if (n2 > 0 and r >0 )
+    {
+
+        h = find(n - 1, n1, n2 - 1, c, r - 1) %   100000000;
+        // dp[n1][n2][l][r] = h;
+    }
+    // int h1 = find(n - 1,0,0);
+    return dp[n1][n2][l][r] = (f + h) %   100000000;
+}
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
-
-    cout << "\n";
+    cin >> a >> b >> c >> d;
+    cout << find(a + b, a, b, c, d) %   100000000;
 }
 signed main()
 {
@@ -71,10 +94,9 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+    memset(dp, -1, sizeof(dp));
+
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

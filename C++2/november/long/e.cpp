@@ -58,12 +58,54 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    vector<int> v(n);
 
-    cout << "\n";
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+    }
+
+    for (int i = 0; i <= 60; ++i)
+    {
+        count = 0;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (v[j] & (1 << i))
+            {
+                count++;
+            }
+        }
+        // db(count);
+        if (count & 1)
+        {
+            ans += (1 << i);
+
+            for (int j = 0; j < n; ++j)
+            {
+
+                v[j] += (1 << i);
+            }
+        }
+    }
+    // cout << ans;
+    int pp = 0;
+    for (auto it : v)
+    {
+        // cout << it<<" ";
+        pp ^= it;
+    }
+    if (pp != 0)
+    {
+        cout << "-1"
+             << "\n";
+        return;
+    }
+
+    cout << ans
+         << "\n";
+    // cout << "\n";
 }
 signed main()
 {

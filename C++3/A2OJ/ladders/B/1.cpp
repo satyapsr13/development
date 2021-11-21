@@ -8,26 +8,12 @@
 using namespace std;
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, count = 0, sum = 0;
-    cin >> n;
 
-    vector<int> v;
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(23);
-    v.push_back(23);
-    v.push_back(23);
-    v.push_back(23);
-    v.push_back(234);
-    v.push_back(2345);
-    v.push_back(23456);
-    sort(v.begin(), v.end(), [&](int a, int b)
-         { return a % 10 == 3; });
-
-    for (auto it : v)
-    {
-        cout << it << " ";
-    }
+    string s;
+    // cin.getline(s,14);
+    getline(cin,s);
+    cin.ignore();
+    cout << s;
 }
 signed main()
 {

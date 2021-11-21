@@ -57,12 +57,24 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    string s;
+    cin >> s; //s.find('^');//! int num = stoll(s);
+    // s += '$';
+    int n = s.size();
 
+    if (s[0] == s[n - 1] || n == 1)
+    {
+        cout << s;
+    }
+    else
+    {
+        for (int i = 0; i < n - 1; i++)
+        {
+            cout << s[i];
+        }
+        cout << s[0];
+    }
+    // cout << s;
     cout << "\n";
 }
 signed main()

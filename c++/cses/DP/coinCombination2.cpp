@@ -59,22 +59,40 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    vector<int> v(n);
 
-    cout << "\n";
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+    }
+    vector<int> dp(k + 1, 0);
+    dp[0] = 1;
+    for (int i = 1; i <= k; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            if (i >= v[j])
+            {
+                // dp[i] += (dp[i - v[j]]);
+                if (dp[i - v[j]])
+                {
+                    dp[i - (i - v[j])] = 0;
+                    dp[i]++;
+                }
+            }
+            dp[i] %= 1000000007;
+        }
+    }
+    for (auto it : dp)
+    {
+        cerr << it << " ";
+    }
+    cout << dp[k];
 }
 signed main()
 {
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

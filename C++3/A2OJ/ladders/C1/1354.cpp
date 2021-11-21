@@ -22,7 +22,7 @@ long long power(long long a, long long b, long long md)
 #define endl "\n"
 #define all(v) v.begin(), v.end()
 #define valueupto(x, y) fixed << setprecision(x) << y
-//#define PI 3.141592653589793238462
+#define PI 3.141592653589793238462
 typedef long long ll;
 #ifndef ONLINE_JUDGE
 #define debug(x)                          \
@@ -58,12 +58,10 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
-
-    cout << "\n";
+    cin >> n;
+    // cout << (10000000.0 / tan(PI / (2 * n))) / 10000000.0;
+    // cout << "\n";
+    cout << fixed << setprecision(7) << (10000000.0 / tan(PI / (2 * n))) / 10000000.0 << endl;
 }
 signed main()
 {

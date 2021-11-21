@@ -37,9 +37,9 @@ void _print(int t)
 {
     cerr << t;
 }
-void _print(string t) { cerr << t; }
-void _print(char t) { cerr << t; }
-void _print(double t) { cerr << t; }
+void _print(string t) { cerr << t; }  
+void _print(char t) { cerr << t; }  
+void _print(double t) { cerr << t; }  
 
 template <class T>
 void _print(vector<T> v)
@@ -58,12 +58,25 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    vector<int> v(n);
 
-    cout << "\n";
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+        if (v[i] & 1)
+        {
+            sum++;
+        }
+    }
+    if (sum > 1)
+    {
+        cout << sum /2 << "\n";
+        return;
+    }
+    cout << "0"
+         << "\n";
+    return;
 }
 signed main()
 {

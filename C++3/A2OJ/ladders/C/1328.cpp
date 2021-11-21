@@ -57,12 +57,55 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    string s1 = "";
+    string s2 = "";
+    bool l = 1;
+    for (int i = 0; i < n; ++i)
+    {
+        if (s[i] == '2')
+        {
+            if (!l)
+            {
+                l = 0;
+                s1 += '0';
+                s2 += '2';
+                continue;
+            }
+            s1 += '1';
+            s2 += '1';
+            continue;
+        }
 
+        if (s[i] == '0')
+        {
+            s1 += '0';
+            s2 += '0';
+            continue;
+        }
+        if (s[i] == '1')
+        {
+            if (l)
+            {
+                l = 0;
+                s1 += '1';
+                s2 += '0';
+                continue;
+            }
+            else
+            {
+                s1 += '0';
+                s2 += '1';
+                continue;
+            }
+        }
+    }
+    cout << s1;
+    cout << "\n";
+    cout << s2;
     cout << "\n";
 }
 signed main()
@@ -75,6 +118,6 @@ signed main()
     cin >> Test_Cases;
     while (Test_Cases--)
         solved_by_satyapsr13();
-    cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
+    // cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

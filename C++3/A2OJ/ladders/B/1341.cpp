@@ -55,14 +55,53 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
+vector<int> prefix_sums(vector<int> &x)
+{
+    int n = x.size();
+    vector<int> ps(n);
+    ps[0] = x[0];
+    for (int i = 1; i < n; i++)
+    {
+        ps[i] = x[i] + ps[i - 1];
+    }
+    return ps;
+}
+
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    // string s
 
+    vector<int> p1(n, 0);
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+    vector<int> v1;
+    for (int i = 1; i < n - 1; ++i)
+    {
+        // ? { count++}: count = count;
+        if (v[i] > v[i - 1] and v[i] > v[i + 1])
+        {
+            // v1.push_back(i + 1);
+            p1[i] = 1;
+        }
+    }
+    p1 = prefix_sums(p1);
+    int index = 0;
+
+    for (int i = 0; i < n-k+1; ++i)
+    {
+        if (mx < p1[i + k - 2] - p1[i])
+        {
+            mx = p1[i + k - 2] - p1[i];
+            index = i + 1;
+        }
+    }
+    cout << mx+1 << " " << index;
     cout << "\n";
 }
 signed main()
@@ -75,6 +114,6 @@ signed main()
     cin >> Test_Cases;
     while (Test_Cases--)
         solved_by_satyapsr13();
-    cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
+    // cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

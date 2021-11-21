@@ -58,11 +58,50 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    vector<int> v(n);
+    unordered_map<int, int> mp;
+    set<int> st;
+    vector<pair<int, int>> v_pair;
 
+    // sort(v_pair.begin(), v_pair.end());
+
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+        st.insert(v[i]);
+        mp[v[i]]++;
+    }
+
+    if (mp[v[0]] == n)
+    {
+        cout << "0"
+             << "\n";
+        return;
+    }
+
+    if (mp[v[n - 1]] == 1 || mp[v[0]] == 1)
+    {
+        cout << "1"
+             << "\n";
+        return;
+    }
+    if (v[0] == v[n - 1] )
+    {
+        mp[v[0]]--;
+        mp[v[0]]--;
+    }
+    // for (int i = 0; i < n; ++i)
+    // {
+    //     v_pair.push_back(v[i], mp[v[i]]);
+    // }
+    for (auto it : mp)
+    {
+        // cout << it<<" ";
+        mn = min(mn, it.second);
+    }
+
+    cout << mn + 1;
     cout << "\n";
 }
 signed main()

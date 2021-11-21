@@ -55,15 +55,45 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
 
-    cout << "\n";
+    set<int> st;
+    
+    n = (1 << n);
+    vector<int> v;
+
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> x;
+        v.push_back(x);
+        st.insert(x);
+    }
+
+    // sort(v, v + n);
+     
+    sort(v.begin(),v.end());
+        
+
+    for (int i = 1; i < n; ++i)
+    {
+        if (v[i] - v[i - 1] > 1)
+        {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    if (st.size() > 2)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    cout << "YES"
+         << "\n";
+    return;
 }
 signed main()
 {
@@ -71,6 +101,8 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
+
+
     int Test_Cases;
     cin >> Test_Cases;
     while (Test_Cases--)

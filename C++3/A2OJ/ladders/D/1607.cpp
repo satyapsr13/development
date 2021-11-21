@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long int
@@ -7,13 +6,20 @@ long long power(long long a, long long b, long long md)
 {
     return (!b ? 1 : (b & 1 ? a * power(a * a % md, b / 2, md) % md : power(a * a % md, b / 2, md) % md));
 }
-#define db(x) cout << "\t\n" \
-                   << #x << "\t" << x << "\t\n"
-#define dbarr(arr)           \
-    cout << #arr << " ~ [ "; \
-    for (auto n : arr)       \
-        cout << n << " ";    \
-    cout << "]" << endl;
+#define db(x) cout << "\t\n" \                        
+                   << #x \
+                   << "\t" << x << "\t\n"
+#define dbarr(arr)   \
+    \                                                 
+    cout << #arr     \
+         << " ~ [ "; \
+    \                                                 
+    for (auto n : arr)       \                                                 
+        cout         \
+        << n << " "; \
+    \                               
+    cout << "]"      \
+         << endl;
 #define dbarrp(arr)                                \
     cout << #arr << " ~ [ ";                       \
     for (auto n : arr)                             \
@@ -58,12 +64,35 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    vector<int> v(n);
+    for (auto &it : v)
+    {
+        // cout << it << " ";
+        cin >> it;
+    }
 
-    cout << "\n";
+    string s;
+    cin >> s;
+
+    for (int i = 1; i <= n; ++i)
+    {
+
+        if (v[i - 1] > n and s[i - 1] == 'R')
+        {
+            cout << "NO" << endl;
+            return;
+        }
+        if (v[i - 1] < 1 and s[i - 1] == 'B')
+        {
+            cout << "NO" << endl;
+
+            return;
+        }
+    }
+    cout << "YES"
+         << "\n";
+    return;
 }
 signed main()
 {
@@ -78,3 +107,10 @@ signed main()
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }
+
+
+
+
+
+
+

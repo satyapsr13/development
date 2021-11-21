@@ -59,9 +59,47 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    vector<int> v(n);
+    set<int> st;
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+        st.insert(v[i]);
+    }
+    if (st.size() > k)
+    {
+        cout << "-1"
+             << "\n";
+        return;
+    }
+    // cout << n * st.size();
+    // cout << "\n";
+
+    vector<int> vv;
+    for (auto it : st)
+    {
+        // cout << it << " ";
+        vv.push_back(it);
+    }
+    l = vv[0];
+    sum = st.size();
+    while (sum < k)
+    {
+        
+        vv.push_back(l);
+        /* code */
+        sum++;
+    }
+    cout << n * vv.size();
+    cout << "\n";
+
+    for (int i = 0; i < n; ++i)
+    {
+        for (auto it : vv)
+        {
+            cout << it << " ";
+        }
+    }
 
     cout << "\n";
 }

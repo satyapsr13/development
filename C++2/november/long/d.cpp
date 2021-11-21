@@ -59,11 +59,43 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
 
-    cout << "\n";
+    for (int i = 1; i < n; ++i)
+    {
+        cout << i << " " << i + 1;
+        cout << "\n";
+    }
+    if (n - 1 == k)
+    {
+        return;
+        /* code */
+    }
+
+    // k -= n;
+    int j = 3;
+    int ll = 1;
+    count = n;
+
+    while (1)
+    {
+
+        for (int i = 1; i <= ll; ++i)
+        {
+            count++;
+
+            // i == n ? continue : i = i;
+            // db(i);
+            cout << i << " " << j;
+            cout << "\n";
+            if (count > k)
+            {
+                // cout << "\n";
+                return;
+            }
+        }
+        j++;
+        ll++;
+    }
 }
 signed main()
 {
@@ -75,6 +107,6 @@ signed main()
     cin >> Test_Cases;
     while (Test_Cases--)
         solved_by_satyapsr13();
-    cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
+    // cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

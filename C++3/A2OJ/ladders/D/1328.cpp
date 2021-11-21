@@ -58,10 +58,102 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    vector<int> v(n);
+
+    int color[(int)2e5 + 1];
+    set<int> st;
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+        st.insert(v[i]);
+    }
+
+    for (auto it : st)
+    {
+        // cout << it<<" ";
+        color[it] = ++sum;
+    }
+    cout << sum;
+    cout << "\n";
+
+    // for (auto it : v)
+    // {
+    //     cout << color[it] << " ";
+    // }
+    if (st.size() == 1)
+    {
+        cout << 1;
+        cout << "\n";
+        for (auto it : v)
+        {
+            cout << 1 << " ";
+        }
+        cout << "\n";
+        return;
+        /* code */
+    }
+    else
+    {
+        if (v[0] == v[n - 1])
+        {
+
+            cout << 2;
+            cout << "\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                if (i & 1)
+                {
+                    cout << 1 << " ";
+                }
+                else
+                {
+                    cout << 2 << " ";
+                }
+            }
+            cout <<"\n" ;
+            return;
+        }
+        else if (n & 1)
+        {
+            cout << 3;
+            cout << "\n";
+            for (int i = 0; i < n - 1; i++)
+            {
+                if (i & 1)
+                {
+                    cout << 1 << " ";
+                }
+                else
+                {
+                    cout << 2 << " ";
+                }
+            }
+            cout << 3 << " ";
+            cout << "\n";
+            return;
+        }
+        else
+        {
+            cout << 2;
+            cout << "\n";
+
+            for (int i = 0; i < n; i++)
+            {
+                if (i & 1)
+                {
+                    cout << 1 << " ";
+                }
+                else
+                {
+                    cout << 2 << " ";
+                }
+            }
+            cout << "\n";
+            return;
+        }
+    }
 
     cout << "\n";
 }

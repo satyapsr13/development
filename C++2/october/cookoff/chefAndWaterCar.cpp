@@ -59,10 +59,36 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
 
+    cout << ((n * (n - 1)) / 2) << " ";
+    count = n-1;
+    // sum++;
+    for (int i = 1; i <= n; ++i)
+    {
+
+        if (count > 0)
+        {
+            // count -= k;
+            if (count - k >= 0)
+            {
+                ans += (i * k);
+                count -= k;
+                sum += k;
+              
+            }
+            else
+            {
+                sum += n - i;
+                ans += ((count) * i);
+                break;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+    cout << ans;
     cout << "\n";
 }
 signed main()

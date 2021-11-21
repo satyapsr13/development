@@ -59,11 +59,40 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    if (n & 1)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    if (!(n & 1) and !(k & 1))
+    {
 
-    cout << "\n";
+        cout << "YES"
+             << "\n";
+        return;
+    }
+
+    // for (int i = 2; i <= 100; ++i)
+    // {
+    //     for (int j = 1; j < 100; ++j)
+    //     {
+    //         if (i * 2 == j)
+    //         {
+    //             db(i);
+    //             db(j);
+    //             cout << "\n";
+    //         }
+    //     }
+    // }
+
+    if (n != 0 and (k & 1))
+    {
+        cout << "YES"
+             << "\n";
+        return;
+    }
+    cout << "NO" << endl;
+    return;
 }
 signed main()
 {

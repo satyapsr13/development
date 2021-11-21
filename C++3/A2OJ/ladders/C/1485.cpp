@@ -59,13 +59,15 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    vector<int> v(n);
 
-    cout << "\n";
-}
-signed main()
+    for (int i = 0, x; i < n; ++i) 
+    { 
+        cin >> v[i]; 
+    } 
+     
+} 
+signed main() 
 {
 
     ios_base::sync_with_stdio(false);

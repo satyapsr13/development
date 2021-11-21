@@ -9,6 +9,10 @@ long long power(long long a, long long b, long long md)
 }
 #define db(x) cout << "\t\n" \
                    << #x << "\t" << x << "\t\n"
+#define db2(x, y) cout << "\t\n"          \
+                       << #x << "\t" << x \
+                       << " "             \
+                       << #y << "\t" << y << "\t"
 #define dbarr(arr)           \
     cout << #arr << " ~ [ "; \
     for (auto n : arr)       \
@@ -55,26 +59,61 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+int mark[10002][10002];
+int n;
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
 
-    cout << "\n";
+    cin >> n;
+    char arr[1002][1002];
+
+    for (int i = 1; i <= n; ++i)
+    {
+        for (int j = 1; j <= n; ++j)
+        {
+            cin >> arr[i][j];
+        }
+    }
+    // int mark[0][]
+
+    // for (int i = 0; i < n; ++i)
+    // {
+    //     mark[i][0] = 1;
+    //     mark[0][i] = 1;
+    // }
+
+    mark[1][0] = 1;
+    for (int i = 1; i <= n; ++i)
+    {
+        for (int j = 1; j <= n; ++j)
+        {
+            if (arr[i][j] == '.')
+            {
+                mark[i][j] = mark[i][j - 1] + mark[i - 1][j];
+                mark[i][j] %= 1000000007;
+            }
+            else
+            {
+                mark[i][j] = 0;
+            }
+        }
+    }
+
+    // for (int i = 1; i <= n; ++i)
+    // {
+    //     for (int j = 1; j <= n; ++j)
+    //     {
+    //         cout << mark[i][j];
+    //     }
+    //     cout << "\n";
+    // }
+
+    cout << mark[n][n];
 }
 signed main()
 {
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

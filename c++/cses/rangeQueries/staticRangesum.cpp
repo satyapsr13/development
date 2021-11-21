@@ -58,12 +58,32 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    int q;
+    cin >> q;
+    vector<int> v(n + 1, 0);
 
+    for (int i = 1, x; i <= n; ++i)
+    {
+
+        cin >> v[i];
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        v[i] += v[i - 1];
+    }
+  
+
+while (q--)
+{
+    int x, y;
+    cin >> x >> y;
+    cout << v[y] - v[x - 1];
     cout << "\n";
+
+    /* code */
+}
 }
 signed main()
 {
@@ -71,10 +91,8 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

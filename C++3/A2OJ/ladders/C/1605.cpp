@@ -55,15 +55,64 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+bool isContain(string s, string p)
+{
+    int n = s.size();
+    int m = p.size();
+    
+    if (s.size() < p.size())
+    {
+        return 0;
+    }
+    else
+    {
+
+        for (int i = 0; i < n - m + 1; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                if (s[i + j] != p[j])
+                {
+                    break;
+                }
+                if (j == m - 1)
+                { 
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
 
-    cout << "\n";
+    string s;
+    cin >> s;
+    // vector<string> p(7) = {"aa", "aca", "aba", "abca", "acba", "abbacca", "accabba"};
+    vector<string> p;
+
+    p.push_back("aa");
+    p.push_back("aba");
+    p.push_back("aca");
+    p.push_back("acba");
+    p.push_back("abca");
+    p.push_back("abbacca");
+    p.push_back("accabba");
+
+    for (int y = 0; y < 7; ++y)
+    {
+        if (isContain(s, p[y]))
+        {
+            cout << p[y].size() << "\n";
+            return;
+        }
+    }
+    cout << "-1"
+         << "\n";
+    return;
 }
 signed main()
 {

@@ -1,3 +1,34 @@
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int main()
+// {
+//     int t;
+//     cin >> t;
+//     while (t--)
+//     {
+//         /* code */
+
+//         int mod = 1e9 + 7;
+//         int n;
+//         cin >> n;
+//         vector<int> dp(n + 1, 0);
+//         dp[0] = 1;
+//         for (int i = 1; i <= n; i++)
+//         {
+//             for (int j = 1; j <= 6 && i - j >= 0; j++)
+//             {
+//                 (dp[i] += dp[i - j]) %= mod;
+//             }
+//         }
+//         cout << dp[n] << endl;
+//         for (auto it : dp)
+//         {
+//             cout << it << " ";
+//         }
+//         cout << "\n";
+//     }
+// }
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -55,54 +86,23 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
-// unordered_multimap<int, int> mp;
-int mp[100000];
-int find(vector<int> v, int n, int sum, int ans)
-{
-
-    if (sum == 0)
-    {
-
-        return ans;
-    }
-
-    if (n == -1)
-    {
-        return INT_MAX;
-    }
-
-    if (v[n] <= sum)
-    {
-
-        return min(find(v, n, sum - v[n], 1 + ans), find(v, n - 1, sum, ans));
-    }
-    else
-    {
-        return find(v, n - 1, sum, ans);
-    }
-}
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-
-    cin >> n >> k;
-    vector<int> v(n);
-
-    for (int i = 0, x; i < n; ++i)
-    {
-        cin >> v[i];
-    }
-    // cout << find(v, n - 1, k, 0);
-    // cout << "\n";
-    ans = find(v, n - 1, k, 0);
-    if (ans == INT_MAX)
-    {
-        cout << "-1"
-             << "\n";
-        return;
-    }
-    cout << ans << "\n";
-    return;
+    cin >> n;
+    int dp[n + 1]={0};                                                                                                                                                                                                                                                                       
+    dp[0] = 1;                                                                                                                                                                                                                                                                       
+    int mod = 1e9 + 7;                                                                                                                                                                                                                                                                       
+    for (int i = 1; i <= n; ++i)                                                                                                                                                                                                                                                                       
+    {                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                       
+        for (int j = 1; j <= 6 and i - j >= 0; ++j)                                                                                                                                                                                                                                                                       
+        {                                                                                                                                                                                                                                                                       
+            dp[i] += dp[i - j] % mod;
+            dp[i] %= mod;
+        }                                                                                                                                                                                                                                                                       
+    }                                                                                                                                                                                                                                                                       
+    cout << dp[n];                                                                                                                                                                                                                                                                       
 }
 signed main()
 {
@@ -110,7 +110,6 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-    // int arr[1000000];
     solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;

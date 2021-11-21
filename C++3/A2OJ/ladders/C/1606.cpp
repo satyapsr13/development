@@ -1,9 +1,8 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long int
 #define count_1 __builtin_popcountll
-long long power(long long a, long long b, long long md)
+long long power(long long a, long long b, long long md = 1000000007)
 {
     return (!b ? 1 : (b & 1 ? a * power(a * a % md, b / 2, md) % md : power(a * a % md, b / 2, md) % md));
 }
@@ -59,9 +58,27 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    vector<int> v(n);
+
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+        v[i] = power(10, v[i]);
+    }                                 
+                                 
+    vector<int> canuse(n + 1, 0);
+
+    for (int i = 0; i < n; ++i)
+    {
+
+
+
+    
+
+
+
+
+    }
 
     cout << "\n";
 }

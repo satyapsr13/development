@@ -58,11 +58,33 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n;
+    l = n;
+    // vector<int> v;
+    // count++;
+    // while (n > 0)
+    // {
+    //     v.push_back(n);
+    //     n -= (count++);
 
+    // }
+    // for (auto it : v)
+    // {
+    //     cout << it << " ";
+    //     cout << l- it << " ";
+    //     cout << "\n";
+    // }
+    n = sqrt(2 * n);
+    // db(n );
+    while ((n * n) + n < 2*l)
+    {
+        n++;
+    }
+
+
+    // cout << "dfssssss\n";
+
+    cout << n * 2;
     cout << "\n";
 }
 signed main()

@@ -57,13 +57,73 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    int n, k, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
+    cin >> n;
+    vector<int> v(n);
 
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
+    }
+
+    vector<int> ans;
+    ans.push_back(v[0]);
+    set<int> st;
+    st.insert(v[0]);
+
+    // for (int i = 1; i < n; ++i)
+    // {
+    //     st.insert(v[i]);
+    // }
+    int arr[100004];
+    memset(arr, -1, sizeof(arr));
+    for (int j = 1; j < n; ++j)
+    {
+        l = ans.size();
+
+        for (int i = 0; i < l; ++i)
+        {
+            if (arr[v[j] + ans[i]] != -1)
+            {
+                if (arr[v[j]] != -1)
+                {
+                    continue;
+                }
+                else
+                {
+                    arr[v[j]] = 1;
+                    ans.push_back(v[j]);
+                    st.insert(v[j]);
+                }
+                continue;
+            }
+            else
+            {
+                arr[v[j] + ans[i]] = 1;
+
+                ans.push_back(v[j] + ans[i]);
+                st.insert(v[j] + ans[i]);
+            }
+            if (arr[v[j]] != -1)
+            {
+                continue;
+            }
+            else
+            {
+                arr[v[j]] = 1;
+                ans.push_back(v[j]);
+                st.insert(v[j]);
+            }
+        }
+    }
+    cout << st.size();
     cout << "\n";
+
+    for (auto it : st)
+    {
+        cout << it << " ";
+    }
+    /* code */
 }
 signed main()
 {
@@ -71,10 +131,8 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

@@ -1,7 +1,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long int
+#define int long
 #define count_1 __builtin_popcountll
 long long power(long long a, long long b, long long md)
 {
@@ -55,16 +55,13 @@ void _print(vector<T> v)
 //const int d4x[4] = {-1, 0, 1, 0}, d4y[4] = {0, 1, 0, -1};
 //const int d8x[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, d8y[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
-void solved_by_satyapsr13()
-{
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+int dp[2][10000001] = {0};
+// void solved_by_satyapsr13()
+// {
 
-    cout << "\n";
-}
+//     cout << dp[0][n] + dp[1][n];
+//     cout << "\n";
+// }
 signed main()
 {
 
@@ -73,8 +70,28 @@ signed main()
     cout.tie(nullptr);
     int Test_Cases;
     cin >> Test_Cases;
+    // vector<int>  v;
+    dp[0][1] = 1;
+    dp[0][2] = 5;
+    dp[1][1] = 1;
+    dp[1][2] = 3;
+
+    for (int i = 3; i <= 10000001; ++i)
+    {
+        int t1 = dp[0][i - 1] * 5;
+        int t2 = dp[1][i - 1] * 3;
+        dp[0][i] = ((((t1 * 4 / 5) % 1000000007) + (t2 * 1 / 3) % 1000000007)) % 1000000007;
+        dp[1][i] = ((((t1 * 1 / 5) % 1000000007) + (t2 * 2 / 3) % 1000000007)) % 1000000007;
+    }
     while (Test_Cases--)
-        solved_by_satyapsr13();
+    // solved_by_satyapsr13();
+    {
+        int n;
+        cin >> n;
+
+        cout << ((dp[1][n] + dp[0][n]) % 1000000007);
+        cout << "\n";
+    }
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

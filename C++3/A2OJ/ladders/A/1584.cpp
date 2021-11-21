@@ -59,9 +59,10 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
+    cout << n;
     cout << " ";
-    cout << -k*k;
+    cout <<-k;
+
 
     cout << "\n";
 }

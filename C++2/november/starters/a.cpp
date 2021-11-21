@@ -58,12 +58,26 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n >> k >> ans >> l;
+    if (n == ans and l == k)
+    {
 
-    cout << "\n";
+        cout << "0"
+             << "\n";
+        return;
+    }
+    else if ((n + k) % 2 == (ans + l) % 2)
+    {
+        cout << "2"
+             << "\n";
+        return;
+    }
+    else
+    {
+        cout << "1"
+             << "\n";
+        return;
+    }
 }
 signed main()
 {

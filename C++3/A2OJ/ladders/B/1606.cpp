@@ -59,10 +59,31 @@ void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    l = 2;
+    if (n == k and k == 1)
+    {
+        cout << "0"
+             << "\n";
+        return;
+    }
+    if (k==1)
+    {cout <<n-1<<"\n";  
+    return;
+        
+    }
+    while (l < n)
+    {
+        count++;
 
+       
+        mn = min(l, k);
+        if (mn==k)
+        {
+            break;
+        }
+        l += mn;
+    }
+    cout << count + 1+((n-l-1)/k);
     cout << "\n";
 }
 signed main()

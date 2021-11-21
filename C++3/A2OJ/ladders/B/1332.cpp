@@ -57,12 +57,73 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    int n, k, ans = 0, l = 0, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
+    cin >> n;
+    // db(n);
+    vector<int> v(n);
+    vector<int> ans1;
+    int arr[10] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+    unordered_map<int, int> mp;
+    // mp[2] = 1;
+    for (int i = 0, x; i < n; ++i)
+    {
+        cin >> v[i];
 
+        for (int j = 0; j < 10; ++j)
+        {
+            if (v[i] % arr[j] == 0)
+            {
+                if (mp[arr[j]] == 0)
+                {
+                    mp[arr[j]] = ++l;
+
+                    ans1.push_back(mp[arr[j]]);
+                }
+                else
+                {
+
+                    ans1.push_back(mp[arr[j]]);
+                }
+
+                // mx = max(mx, j + 1);
+                break;
+            }
+            if (j == 9)
+            {
+                sum = 1;
+                ans1.push_back(-1);
+                break;
+            }
+        }
+    }
+
+    if (n <= 11)
+    {
+        cout << n;
+        // cout << " ";
+        cout << "\n";
+
+        for (int i = 0; i < n; ++i)
+        {
+            cout << i + 1 << " ";
+        }
+        cout << "\n";
+        return;
+    }
+
+    mx = mp.size();
+    cout << mx + sum << "\n";
+    // return;
+    for (auto it : ans1)
+    {
+        if (it == -1)
+        {
+
+            cout << mx + sum << " ";
+            continue;
+        }
+        cout << it << " ";
+    }
     cout << "\n";
 }
 signed main()

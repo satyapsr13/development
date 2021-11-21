@@ -1,7 +1,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long int
+// #define int long long int
 #define count_1 __builtin_popcountll
 long long power(long long a, long long b, long long md)
 {
@@ -57,24 +57,41 @@ void _print(vector<T> v)
 ////vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 void solved_by_satyapsr13()
 {
-    int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
+    int n, k;
     cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    vector<int> v(n, 0);
+    vector<int> v1(n, 0);
+    vector<vector<int>> dp(n + 1, vector<int>(k + 1, 0));
 
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> v[i];
+    }
+
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> v1[i];
+    }
+
+    for (int i = 1; i <= n; ++i)
+    {
+        for (int j = 0; j <= k; ++j)
+        {
+            dp[i][j] = dp[i - 1][j];
+            if (j >= v[i - 1])
+            {
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - v[i - 1]] + v1[i - 1]);
+            }
+        }
+    }
+
+    cout << dp[n][k];
     cout << "\n";
 }
 signed main()
 {
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    int Test_Cases;
-    cin >> Test_Cases;
-    while (Test_Cases--)
-        solved_by_satyapsr13();
+    solved_by_satyapsr13();
     cerr << "Time taken : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms";
     return 0;
 }

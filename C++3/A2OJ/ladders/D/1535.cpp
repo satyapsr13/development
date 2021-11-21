@@ -58,12 +58,39 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    // cin >> n;
+    vector<string> v;
+    string s;
+    int arr[9] = {0, 3, 6, 1, 4, 7, 2, 5, 8};
 
-    cout << "\n";
+    for (int i = 0; i < 9; ++i)
+    {
+        cin >> s;
+        cin.ignore();
+        v.push_back(s);
+    }
+
+    for (int i = 0; i < 9; ++i)
+    {
+
+        for (int j = 0; j < 9; ++j,i++)
+        {
+
+            if (v[i][arr[j]] == '1')
+            {
+                v[i][arr[j]] = '2';
+            }
+            else
+            {
+                v[i][arr[j]] = '1';
+            }
+        }
+    }
+    for (int i = 0; i < 9; ++i)
+    {
+        cout << v[i];
+        cout << "\n";
+    }
 }
 signed main()
 {

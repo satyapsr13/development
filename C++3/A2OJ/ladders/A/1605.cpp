@@ -58,11 +58,12 @@ void _print(vector<T> v)
 void solved_by_satyapsr13()
 {
     int n, k, ans = 0, l, count = 0, sum = 0, mn = INT_MAX, mx = INT_MIN;
-    cin >> n >> k;
-    cout << n*n;
-    cout << " ";
-    cout << -k*k;
+    cin >> n >> k >> l;
+    count = n + k;
+    count = abs(count - (2 * l));
 
+    int t = count % 3;
+    cout << min(t, 3 - t);
     cout << "\n";
 }
 signed main()
